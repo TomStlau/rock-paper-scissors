@@ -5,6 +5,16 @@ function getComputerChoice (list) {
   return CHOICES[randomNumber]
 }
 
+function getPlayerChoice () {
+  let playerAnswer = ''
+  while (true) {
+    playerAnswer = prompt('Rock, Paper or Scissor?\n').toLowerCase()
+    if (CHOICES.includes(playerAnswer)) break
+    alert('Invalid input. Please enter rock, paper or scissor.')
+  }
+  return playerAnswer
+}
+
 function didIWin (playerAnswer, computerAnswer) {
   switch (playerAnswer) {
     case 'rock': {
@@ -19,17 +29,29 @@ function didIWin (playerAnswer, computerAnswer) {
   }
 }
 
-function playAGame () {
-  let playerAnswer = ''
-  while (true) {
-    playerAnswer = prompt('Rock, Paper or Scissor?\n').toLowerCase()
-    if (CHOICES.includes(playerAnswer)) break
-    alert('Invalid input. Please enter rock, paper or scissor.')
-  }
-  let computerAnswer = getComputerChoice(CHOICES)
+function playAGame (playerAnswer, computerAnswer) {
   if (playerAnswer === computerAnswer) return `It's a tie!`
   if (didIWin(playerAnswer, computerAnswer)) {
-    return `You win! ${playerAnswer} beats ${computerAnswer}`
+    console.log(`You win! ${playerAnswer} beats ${computerAnswer}`)
+    return 'win'
   }
-  return `You lose! ${computerAnswer} beats ${playerAnswer}`
+  console.log(`You lose! ${computerAnswer} beats ${playerAnswer}`)
+  return 'loss'
 }
+
+function game () {
+  let score = 0
+  for (let i = 0; i < 5; i++) {
+    let result = playAGame(getPlayerChoice(), getComputerChoice(CHOICES))
+    console.log(result)
+    result === 'win' ? score++ : ''
+  }
+  if (score >= 3) {
+    console.log('You are the winner!')
+    return 1
+  }
+  console.log('Sorry, try again.')
+  return 0
+}
+
+game()
