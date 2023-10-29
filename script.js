@@ -38,20 +38,3 @@ function playAGame (playerAnswer, computerAnswer) {
   console.log(`You lose! ${computerAnswer} beats ${playerAnswer}`)
   return 'loss'
 }
-
-function game () {
-  let score = 0
-  for (let i = 0; i < 5; i++) {
-    let result = playAGame(getPlayerChoice(), getComputerChoice(CHOICES))
-    console.log(result)
-    result === 'win' ? score++ : ''
-  }
-  if (score >= 3) {
-    console.log('You are the winner!')
-    return 1
-  }
-  console.log('Sorry, try again.')
-  return 0
-}
-
-game()
