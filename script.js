@@ -79,12 +79,12 @@ function playAGame (playerAnswer, computerAnswer) {
   }
 
   function checkScore () {
-    if (playerScore === 2) {
+    if (playerScore === 5) {
       winnerText.innerText = 'You are the winner!'
       winnerText.classList.add('winning')
       endGame()
     }
-    if (computerScore === 2) {
+    if (computerScore === 5) {
       winnerText.innerText = 'You lost the game!'
       endGame()
     }
