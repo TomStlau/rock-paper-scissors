@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,17 +8,35 @@
 
 body {
     background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    overflow: hidden;
+}
+
+h1 {
+    position: absolute;
+    top: 0;
+    margin-top: 100px;
+    font-family: 'Indie Flower', cursive;
+    color: crimson;
+}
+
+.attribution {
+    font-size: 10px;
 }
 
 .container {
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
+
     width: 100vw;
     height: 100vh;
 }
+
+
 .card {
-    max-width: 1000px;
+    padding: 20px;
+    max-width: 720px;
     min-width: 80%;
     display: flex;
     flex-direction: column;
@@ -24,20 +44,191 @@ body {
     align-items: center;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+    border-radius: 10px;
+    animation: ease-in-up 1s forwards;
 }
 .choices-container {
+    opacity: 0;
+    transform: translateX(-100%);
     display: flex;
+    margin: 20px;
     width: 100%;
     justify-content: space-around;
+    text-align: center;
+    animation: ease-in-left 1s forwards;
+    animation-delay: 0.7s;
+}
+
+
+
+h2 {
+    opacity: 0;
+    transform: translateX(100%); 
+    animation: ease-in-right 1s forwards; 
+  }
+  
+  @keyframes ease-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+
+  @keyframes ease-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+
+  @keyframes ease-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+  @keyframes ease-in-down {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes ease-out-down {
+    from {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    
+  }
+
+
+
+
+img {
+    border-radius: 10px;
+}
+
+.replay-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: crimson;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition-duration: .2s;
+}
+
+.replay-btn:hover {
+    scale: 0.95;
+}
+
+.winning {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: crimson;
 }
 
 .choice {
     width: 150px;
     height: 150px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 10px;
+    transition-duration: .2s;
+}
+.choice:hover {
+    scale: 0.95;
+    cursor: pointer;
+}
+
+.choice:active {
+    scale: 1;
 }
 .score-container { 
+    opacity: 0;
+    transform: translateY(100%);
     width: 40%;
     display: flex;
     justify-content: space-around;
+    animation: ease-in-up 1s forwards;
+    animation-delay: 1s;
+}
+
+.ease-out-down {
+    animation: ease-out-down 1s forwards;
+}
+
+.hidden {
+    display: none;
+}
+
+#card-2 {
+    animation: ease-in-up 1s forwards;
+    
+
+}
+
+#player-choice {
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: ease-in-left 1s forwards;
+}
+
+#computer-choice {
+    opacity: 0;
+    transform: translateX(100%);
+    animation: ease-in-right 1s forwards;
+    animation-delay: 1.5s;
+}
+
+.winner-text {
+    opacity: 0;
+    transform: translateY(100%);
+    animation: ease-in-down 1s forwards;
+    animation-delay: 2s;
+}
+
+@media screen and (max-width: 600px) {
+
+    .card {
+        scale: .95;
+    }
+
+    .choices-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        position: relative;
+    }
+
+    .score-container {
+        gap: 10px;
+    }
+
+    
+    
 }
